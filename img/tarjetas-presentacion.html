@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tarjetas de presentación — Dayana Carvajal</title>
+<meta name="description" content="Tarjetas de presentación de Dayana Carvajal y Olympus Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="../css/style.css?v=2026101511" rel="stylesheet">
+<style>
+body.cards-viewer { min-height:100vh; margin:0; overflow-x:hidden; background:#f4eee6; color:#253542; }
+.cards-viewer::before,.cards-viewer::after { content:""; position:fixed; z-index:-1; width:38vw; height:38vw; border-radius:50%; filter:blur(8px); opacity:.5; pointer-events:none; }
+.cards-viewer::before { top:-15vw; right:-9vw; background:radial-gradient(circle,#8dd4e1,transparent 68%); animation:cardsFloat 12s ease-in-out infinite alternate; }
+.cards-viewer::after { bottom:-17vw; left:-12vw; background:radial-gradient(circle,#d1a77d,transparent 68%); animation:cardsFloat 15s ease-in-out infinite alternate-reverse; }
+.cards-shell { width:min(1160px,calc(100% - 32px)); margin:auto; padding:28px 0 58px; animation:cardsRise .7s cubic-bezier(.2,.8,.2,1) both; }
+.cards-topbar { display:flex; justify-content:space-between; align-items:center; gap:18px; }
+.cards-brand { display:flex; align-items:center; gap:12px; color:#263d4a; text-decoration:none; font-size:.77rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+.cards-brand img { width:42px; height:42px; padding:5px; object-fit:contain; border-radius:12px; background:#fff; box-shadow:0 8px 18px rgba(39,53,62,.11); }
+.cards-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
+.cards-action { display:inline-flex; align-items:center; gap:7px; padding:10px 16px; border:1px solid rgba(39,61,74,.18); border-radius:999px; background:rgba(255,255,255,.65); color:#294656; text-decoration:none; font-size:.72rem; transition:transform .25s ease,background .25s ease; }
+.cards-action:hover { transform:translateY(-2px); background:#fff; }
+.cards-heading { max-width:760px; margin:70px auto 36px; text-align:center; }
+.cards-heading span { display:block; margin-bottom:10px; color:#397d94; font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+.cards-heading h1 { margin:0; color:#1f3440; font-size:clamp(2.3rem,6vw,5.6rem); line-height:.95; letter-spacing:-.065em; }
+.cards-heading p { max-width:540px; margin:20px auto 0; color:#62717a; font-size:.85rem; line-height:1.75; }
+.cards-document { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(20px,4vw,48px); padding:clamp(22px,4vw,55px); border:1px solid rgba(255,255,255,.7); border-radius:30px; background:rgba(255,255,255,.4); box-shadow:0 30px 75px rgba(64,56,45,.16); }
+.cards-page { position:relative; margin:0; padding:11px; border-radius:17px; background:#fff; box-shadow:0 22px 38px rgba(43,48,48,.2); transition:transform .35s ease,box-shadow .35s ease; }
+.cards-page:first-child { transform:rotate(-2deg); }.cards-page:last-child { transform:rotate(2deg); }.cards-page:hover { z-index:2; transform:translateY(-10px) rotate(0) scale(1.025); box-shadow:0 30px 52px rgba(43,48,48,.27); }
+.cards-page img { display:block; width:100%; height:auto; border-radius:9px; }.cards-page figcaption { padding:14px 8px 5px; color:#6a777d; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; }
+.cards-note { margin:28px auto 0; color:#6a777d; text-align:center; font-size:.72rem; }
+@keyframes cardsRise { from{opacity:0;transform:translateY(22px) scale(.985)} to{opacity:1;transform:none} } @keyframes cardsFloat { from{transform:translate3d(-2%,0,0) scale(1)} to{transform:translate3d(5%,5%,0) scale(1.1)} }
+@media(max-width:720px){.cards-shell{width:min(100% - 20px,1160px);padding-top:16px}.cards-topbar{align-items:flex-start;flex-direction:column}.cards-actions{justify-content:flex-start}.cards-heading{margin-top:50px}.cards-document{grid-template-columns:1fr;padding:15px;gap:20px}.cards-page:first-child,.cards-page:last-child{transform:none}.cards-viewer::before,.cards-viewer::after{width:65vw;height:65vw}}
+@media(prefers-reduced-motion:reduce){.cards-viewer::before,.cards-viewer::after,.cards-shell{animation:none}}
+</style>
+</head>
+<body class="cards-viewer">
+<main class="cards-shell">
+<header class="cards-topbar"><a class="cards-brand" href="../nosotros.html"><img src="olympus-studio-logo.png" alt="Olympus Studio"><span>Olympus Studio</span></a><nav class="cards-actions" aria-label="Acciones de las tarjetas"><a class="cards-action" href="../nosotros.html">← Volver a Nosotros</a></nav></header>
+<section class="cards-heading"><span>Tarjetas de presentación</span><h1>Una marca que se presenta con intención.</h1><p>Frente y reverso de la tarjeta de presentación de Dayana Carvajal para Olympus Studio.</p></section>
+<section class="cards-document" aria-label="Documento visual de tarjetas de presentación"><figure class="cards-page"><img src="tarjeta-dayana-frente.jpeg" alt="Frente de la tarjeta de presentación de Dayana Carvajal"><figcaption>01 · Frente</figcaption></figure><figure class="cards-page"><img src="tarjeta-dayana-reverso.jpeg" alt="Reverso de la tarjeta de presentación de Dayana Carvajal"><figcaption>02 · Reverso</figcaption></figure></section>
+<p class="cards-note">Olympus Studio · Estrategia · Diseño · Comunicación visual</p>
+</main>
+</body>
+</html>

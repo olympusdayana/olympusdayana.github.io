@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio de servicios — Dayana Carvajal</title>
+  <meta name="description" content="Portafolio de servicios de Olympus Studio presentado por Dayana Carvajal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../css/style.css?v=2026101511" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; }
+    body.portfolio-viewer { min-height:100vh; margin:0; overflow-x:hidden; background:#101b25; color:#f7f3ed; }
+    .portfolio-viewer::before,.portfolio-viewer::after { content:""; position:fixed; z-index:-1; width:42vw; height:42vw; border-radius:50%; filter:blur(12px); opacity:.5; pointer-events:none; }
+    .portfolio-viewer::before { top:-17vw; left:-10vw; background:radial-gradient(circle,#3a8ca5 0%,transparent 68%); animation:viewerFloat 11s ease-in-out infinite alternate; }
+    .portfolio-viewer::after { right:-14vw; bottom:-20vw; background:radial-gradient(circle,#bd835b 0%,transparent 68%); animation:viewerFloat 14s ease-in-out infinite alternate-reverse; }
+    .viewer-shell { width:min(1240px,calc(100% - 32px)); margin:0 auto; padding:28px 0 46px; animation:viewerRise .7s cubic-bezier(.2,.8,.2,1) both; }
+    .viewer-topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .viewer-brand { display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; }
+    .viewer-brand img { width:42px; height:42px; object-fit:contain; border-radius:12px; background:#fff; padding:5px; }
+    .viewer-actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .viewer-action { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:10px 16px; color:#fff; background:rgba(255,255,255,.08); text-decoration:none; font:500 .75rem Poppins,sans-serif; transition:transform .25s ease,background .25s ease,border-color .25s ease; }
+    .viewer-action:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.55); background:rgba(255,255,255,.16); }
+    .viewer-intro { display:flex; align-items:end; justify-content:space-between; gap:28px; margin:18px 0 22px; }
+    .viewer-kicker { display:block; margin-bottom:8px; color:#9bd7e3; font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+    .viewer-intro h1 { max-width:720px; margin:0; color:#fff; font-size:clamp(2rem,5vw,4.4rem); line-height:.98; letter-spacing:-.06em; }
+    .viewer-intro p { max-width:310px; margin:0; color:rgba(255,255,255,.7); font-size:.82rem; line-height:1.7; }
+    .pdf-frame { position:relative; min-height:calc(100vh - 230px); overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:26px; background:#dfe7eb; box-shadow:0 30px 90px rgba(0,0,0,.38),0 0 0 10px rgba(255,255,255,.035); }
+    .pdf-frame::before { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:26px; box-shadow:inset 0 1px 0 rgba(255,255,255,.45); }
+    .pdf-frame iframe { display:block; width:100%; height:calc(100vh - 230px); min-height:620px; border:0; background:#fff; }
+    @keyframes viewerRise { from { opacity:0; transform:translateY(20px) scale(.985); } to { opacity:1; transform:none; } }
+    @keyframes viewerFloat { from { transform:translate3d(-2%,0,0) scale(1); } to { transform:translate3d(5%,6%,0) scale(1.12); } }
+    @media (max-width:700px) { .viewer-shell { width:min(100% - 20px,1240px); padding-top:16px; } .viewer-topbar,.viewer-intro { align-items:flex-start; flex-direction:column; } .viewer-actions { justify-content:flex-start; } .viewer-intro h1 { font-size:2.6rem; } .pdf-frame { border-radius:18px; } .pdf-frame iframe { height:75vh; min-height:540px; } }
+    @media (prefers-reduced-motion:reduce) { .portfolio-viewer::before,.portfolio-viewer::after,.viewer-shell { animation:none; } }
+  </style>
+</head>
+<body class="portfolio-viewer">
+  <main class="viewer-shell">
+    <header class="viewer-topbar">
+      <a class="viewer-brand" href="../servicios.html"><img src="olympus-studio-logo.png" alt="Olympus Studio"><span>Olympus Studio</span></a>
+      <nav class="viewer-actions" aria-label="Acciones del portafolio">
+        <a class="viewer-action" href="../servicios.html">← Volver a Servicios</a>
+        <a class="viewer-action" href="portafolio-servicios-dayana-carvajal.pdf" download>↓ Descargar PDF</a>
+        <a class="viewer-action" href="portafolio-servicios-dayana-carvajal.pdf" target="_blank" rel="noopener">↗ Abrir en Chrome</a>
+      </nav>
+    </header>
+    <section class="viewer-intro">
+      <div><span class="viewer-kicker">Portafolio de servicios</span><h1>Ideas que toman forma.</h1></div>
+      <p>Presentación de Olympus Studio<br>por Dayana Carvajal</p>
+    </section>
+    <section class="pdf-frame" aria-label="Visor del portafolio de servicios">
+      <iframe src="portafolio-servicios-dayana-carvajal.pdf#view=FitH" title="Portafolio de servicios de Dayana Carvajal"></iframe>
+    </section>
+  </main>
+</body>
+</html>
