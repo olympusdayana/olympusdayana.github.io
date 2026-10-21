@@ -26,43 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const readAccounts = () => {
     try {
       const saved = JSON.parse(localStorage.getItem(ACCOUNTS_KEY) || '[]');
-      return Array.isArray(saved) ? saved : [];
+      if (!Array.isArray(saved)) return [];
+      const accounts = saved.filter(account => {
+        const username = String(account?.username || '').trim().toLowerCase();
+        const email = String(account?.email || '').trim().toLowerCase();
+        return !account?.demo && !email.endsWith('@olympus.demo') && !['visitante', 'cliente1', 'cliente2'].includes(username);
+      });
+      if (accounts.length !== saved.length) localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+      return accounts;
     } catch { return []; }
   };
   const saveAccounts = accounts => localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
-  const DEMO_ACCOUNTS = [
-    { username: 'visitante', email: 'visitante@olympus.demo', fullName: 'Alex Visitante', password: 'Olympus2026!', passwordHash: '2c6789bc1479383be98bc6d0e4cd646c6856a2ffd13ca67eab466851bfdf8854' },
-    { username: 'cliente1', email: 'cliente1@olympus.demo', fullName: 'Camila Creativa', password: 'Marca2026!', passwordHash: '283793677290505bd91e9da2a82bc012e4a7142573dec97d75249dc12718abc4' },
-    { username: 'cliente2', email: 'cliente2@olympus.demo', fullName: 'Daniel Digital', password: 'Diseno2026!', passwordHash: '5db68706357de1be33bdb5e8315b89b077f05e3f37cd300c786a67308f79a342' }
-  ];
-  function seedDemoAccounts() {
-    const accounts = readAccounts();
-    let changed = false;
-    DEMO_ACCOUNTS.forEach(demo => {
-      const index = accounts.findIndex(account => normalize(account.username) === normalize(demo.username));
-      if (index < 0) {
-        accounts.push({ username: demo.username, email: demo.email, fullName: demo.fullName,
-          passwordHash: demo.passwordHash, avatar: '', verified: true, demo: true });
-        changed = true;
-      } else if (accounts[index].demo && accounts[index].passwordHash !== demo.passwordHash) {
-        // Update only the demo password hash; keep any profile edits from this browser.
-        accounts[index].passwordHash = demo.passwordHash;
-        accounts[index].verified = true;
-        changed = true;
-      }
-    });
-    if (changed) saveAccounts(accounts);
-  }
   const normalize = value => String(value || '').trim().toLowerCase();
   const validEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   async function hashPassword(password) {
-    if (!window.crypto?.subtle) throw new Error('Abre el sitio mediante HTTPS o localhost para crear cuentas de demostración.');
+    if (!window.crypto?.subtle) throw new Error('Abre el sitio mediante HTTPS o localhost para crear una cuenta.');
     const buffer = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
     return [...new Uint8Array(buffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
   }
 
-  seedDemoAccounts();
 
   function showMessage(message, type = 'error') {
     messageText.textContent = message;
@@ -87,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pendingChallenge = null;
     setActiveForm(loginForm);
     loginTabs.style.display = 'flex';
-    divider.hidden = false;
+    if (divider) divider.hidden = false;
     backLink.hidden = false;
     setTab('login');
     hideMessage();
@@ -99,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTab(tab.dataset.tab);
     setActiveForm(tab.dataset.tab === 'register' ? registerForm : loginForm);
     loginTabs.style.display = 'flex';
-    divider.hidden = false;
+    if (divider) divider.hidden = false;
     backLink.hidden = false;
     hideMessage();
   }));
@@ -117,24 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupToggle('toggleLoginPassword', 'loginPassword');
   setupToggle('toggleRegPassword', 'regPassword');
   setupToggle('toggleRegConfirm', 'regConfirm');
-  document.querySelectorAll('[data-demo-user]').forEach(button => {
-    button.addEventListener('click', () => {
-      document.getElementById('loginUsername').value = button.dataset.demoUser;
-      document.getElementById('loginPassword').value = button.dataset.demoPassword;
-      document.getElementById('loginUsername').focus();
-      showMessage('Datos de demostración cargados. Pulsa “Continuar” para entrar.', 'success');
-    });
-  });
-  const requestedDemo = new URLSearchParams(window.location.search).get('demo');
-  if (requestedDemo) {
-    const demo = DEMO_ACCOUNTS.find(account => account.username === requestedDemo);
-    if (demo) {
-      document.getElementById('loginUsername').value = demo.username;
-      document.getElementById('loginPassword').value = demo.password;
-      showMessage(`Cuenta de muestra “${demo.username}” lista. Pulsa “Continuar” para entrar.`, 'success');
-    }
-  }
-
   function makeCode() {
     const numbers = new Uint32Array(1);
     window.crypto.getRandomValues(numbers);
@@ -148,10 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('verifyCopy').textContent = type === 'register'
       ? 'Confirma el correo de la cuenta con el código de seis dígitos.'
       : 'Escribe el código de seis dígitos para completar el inicio de sesión.';
-    document.getElementById('demoCode').textContent = `Código de demostración: ${pendingChallenge.code} · No se envía por correo.`;
+    document.getElementById('demoCode').textContent = `Código local de verificación: ${pendingChallenge.code} · En esta versión no se envía por correo.`;
     setActiveForm(verifyForm);
     loginTabs.style.display = 'none';
-    divider.hidden = true;
+    if (divider) divider.hidden = true;
     backLink.hidden = true;
     hideMessage();
     document.getElementById('verificationCode').focus();
@@ -209,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pendingChallenge = null;
     setActiveForm(profilePanel);
     loginTabs.style.display = 'none';
-    divider.hidden = true;
+    if (divider) divider.hidden = true;
     backLink.hidden = true;
     document.getElementById('profileName').value = activeSession.fullName || '';
     document.getElementById('profileUsername').value = activeSession.username || '';
@@ -288,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pendingChallenge = null;
       setActiveForm(loginForm);
       loginTabs.style.display = 'flex';
-      divider.hidden = false;
+      if (divider) divider.hidden = false;
       backLink.hidden = false;
       return showMessage('El código venció. Solicita uno nuevo iniciando de nuevo.');
     }
@@ -331,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const email = document.getElementById('forgotEmail').value.trim();
     if (!validEmail(email)) return showMessage('Por favor ingresa un correo válido.');
-    showMessage('La recuperación necesita un servicio de correo conectado; esta demostración no envía mensajes. Contacta a Olympus Studio para restablecerla.');
+    showMessage('La recuperación por correo aún no está configurada. Contacta a Olympus Studio para restablecer el acceso.');
   });
 
   function imageToAvatar(file) {
@@ -407,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showForgot = () => {
     setActiveForm(forgotForm);
     loginTabs.style.display = 'none';
-    divider.hidden = true;
+    if (divider) divider.hidden = true;
     backLink.hidden = false;
     hideMessage();
   };

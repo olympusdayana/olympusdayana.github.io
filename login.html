@@ -1,169 +1,149 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesión — Olympus Studio</title>
-  <meta name="description" content="Accede al panel de Olympus Studio o crea una nueva cuenta.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/login.css">
-<link rel="icon" type="image/png" sizes="128x128" href="img/favicon-128.png?v=3"><link rel="apple-touch-icon" href="img/olympus-studio-logo.png"></head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iniciar sesión — Olympus Studio</title>
+<meta content="Accede al panel de Olympus Studio o crea una nueva cuenta." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/login.css" rel="stylesheet"/>
+<link href="img/favicon-128.png?v=3" rel="icon" sizes="128x128" type="image/png"/><link href="img/olympus-studio-logo.png" rel="apple-touch-icon"/></head>
 <body>
-  <div class="floating-deco floating-deco-1" aria-hidden="true"></div>
-  <div class="floating-deco floating-deco-2" aria-hidden="true"></div>
-  <div class="floating-deco floating-deco-3" aria-hidden="true"></div>
-
-  <main class="login-wrapper">
-    <section class="login-card" aria-label="Acceso de Olympus Studio">
-      <aside class="login-brand-panel" aria-label="Olympus Studio">
-        <div class="login-logo">
-        <a href="index.html" aria-label="Volver al inicio de Olympus Studio">
-          <span class="login-logo-badge"><img class="login-logo-image" src="img/olympus-studio-logo.png" alt="Logo de Olympus Studio"></span>
-        </a>
-          <p>Panel de administración</p>
-        </div>
-        <div class="login-brand-message">
-          <span class="login-brand-kicker">ESTUDIO CREATIVO · CALI</span>
-          <h1>Tu próximo gran paso empieza aquí.</h1>
-          <p>Accede a tu espacio, mantén tu perfil al día y continúa impulsando tu marca.</p>
-        </div>
-        <figure class="login-brand-visual">
-          <img src="img/optimized/login-creative-review.webp" alt="Diseñadora revisa una propuesta visual en su espacio creativo">
-          <figcaption><strong>Tu creatividad, en marcha.</strong><span>Vuelve a tu espacio y sigue dando forma a tus ideas.</span></figcaption>
-        </figure>
-      </aside>
-      <div class="login-content-panel">
-      <div class="login-tabs" role="tablist" aria-label="Acceso o registro">
-        <button type="button" class="login-tab active" data-tab="login" aria-selected="true">Iniciar sesión</button>
-        <button type="button" class="login-tab" data-tab="register" aria-selected="false">Registrarse</button>
-        <div class="login-tab-indicator"></div>
-      </div>
-
-      <div class="message-box" id="messageBox" role="status" aria-live="polite">
-        <span id="messageIcon" aria-hidden="true">&#9888;</span>
-        <span id="messageText"></span>
-      </div>
-
-      <form class="login-form active" id="loginForm" novalidate>
-        <div class="form-group">
-          <label for="loginUsername">Usuario o correo</label>
-          <input type="text" id="loginUsername" placeholder="Ingresa tu usuario" required autocomplete="username">
-        </div>
-        <div class="form-group">
-          <label for="loginPassword">Contraseña</label>
-          <div class="password-wrapper">
-            <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
-            <button type="button" class="toggle-password" id="toggleLoginPassword" aria-label="Mostrar contraseña">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="login-options">
-          <label class="remember-me"><input type="checkbox" id="rememberMe"><span>Recordarme</span></label>
-          <a href="#" class="forgot-link" onclick="showForgot(); return false;">¿Olvidaste tu contraseña?</a>
-        </div>
-        <button type="submit" class="btn-login">Continuar</button>
-        <aside class="demo-accounts" aria-label="Cuentas de demostración">
-          <div class="demo-accounts-heading"><span>ACCESO DE PRUEBA</span><strong>Prueba el perfil en un clic</strong><p>Son cuentas locales de demostración; selecciona una para completar el acceso.</p></div>
-          <div class="demo-account-list">
-            <button class="demo-account demo-account-featured" type="button" data-demo-user="visitante" data-demo-password="Olympus2026!"><span><strong>Ejemplo rápido</strong><small>visitante · Olympus2026!</small></span><b>Usar ↗</b></button>
-          </div>
-          <p class="demo-note">Los cambios de perfil y las cuentas nuevas se guardan solo en este navegador.</p>
-        </aside>
-      </form>
-
-      <form class="login-form" id="registerForm" novalidate>
-        <div class="form-group">
-          <label for="regName">Nombre completo</label>
-          <input type="text" id="regName" placeholder="Tu nombre completo" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label for="regEmail">Correo electrónico</label>
-          <input type="email" id="regEmail" placeholder="tu@email.com" required autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="regUsername">Nombre de usuario</label>
-          <input type="text" id="regUsername" placeholder="Elige un usuario" required autocomplete="username">
-        </div>
-        <div class="form-group">
-          <label for="regPassword">Contraseña</label>
-          <div class="password-wrapper">
-            <input type="password" id="regPassword" placeholder="Mínimo 8 caracteres" required autocomplete="new-password">
-            <button type="button" class="toggle-password" id="toggleRegPassword" aria-label="Mostrar contraseña">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="regConfirm">Confirmar contraseña</label>
-          <div class="password-wrapper">
-            <input type="password" id="regConfirm" placeholder="Repite tu contraseña" required autocomplete="new-password">
-            <button type="button" class="toggle-password" id="toggleRegConfirm" aria-label="Mostrar contraseña">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
-        </div>
-        <label class="terms-check">
-          <input type="checkbox" id="regTerms" required>
-          <span>Acepto los <a href="#" onclick="showTerms(); return false;">términos y condiciones</a> y la <a href="#" onclick="showPrivacy(); return false;">política de privacidad</a></span>
-        </label>
-        <button type="submit" class="btn-login">Crear cuenta</button>
-      </form>
-
-      <form class="login-form" id="verifyForm" novalidate>
-        <div class="verify-icon" aria-hidden="true">✦</div>
-        <h2 class="verify-title" id="verifyTitle">Verifica tu acceso</h2>
-        <p class="verify-copy" id="verifyCopy">Escribe el código de seis dígitos para continuar.</p>
-        <div class="demo-code" id="demoCode" aria-live="polite"></div>
-        <div class="form-group">
-          <label for="verificationCode">Código de verificación</label>
-          <input type="text" id="verificationCode" class="verification-input" placeholder="000000" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>
-        </div>
-        <button type="submit" class="btn-login">Verificar código</button>
-        <button type="button" class="text-button" id="resendCode">Generar otro código</button>
-        <a href="#" class="back-to-login" id="cancelVerification">Volver al acceso</a>
-      </form>
-
-      <form class="login-form" id="forgotForm" novalidate>
-        <p class="forgot-desc">Ingresa tu correo y te enviaremos instrucciones para restablecer tu contraseña.</p>
-        <div class="form-group">
-          <label for="forgotEmail">Correo electrónico</label>
-          <input type="email" id="forgotEmail" placeholder="tu@email.com" required autocomplete="email">
-        </div>
-        <button type="submit" class="btn-login">Enviar instrucciones</button>
-        <a href="#" class="back-to-login" onclick="showLogin(); return false;">&#8592; Volver al inicio de sesión</a>
-      </form>
-
-      <section class="login-form profile-panel" id="profilePanel" aria-labelledby="profileHeading">
-        <div class="profile-heading">
-          <span class="profile-avatar-wrap"><img id="profileAvatarPreview" alt="Foto de perfil" hidden><span id="profileAvatarFallback" aria-hidden="true">O</span></span>
-          <div><span class="section-kicker">Tu cuenta</span><h2 id="profileHeading">Mi perfil</h2><p>Actualiza tu información personal.</p></div>
-        </div>
-        <form id="profileForm" novalidate>
-          <label class="avatar-upload" for="profileAvatarInput">Cambiar foto de perfil<input type="file" id="profileAvatarInput" accept="image/*"><span>Seleccionar imagen</span></label>
-          <div class="form-group"><label for="profileName">Nombre completo</label><input type="text" id="profileName" autocomplete="name" required></div>
-          <div class="form-group"><label for="profileUsername">Nombre de usuario</label><input type="text" id="profileUsername" autocomplete="username" required></div>
-          <div class="form-group"><label for="profileEmail">Correo electrónico</label><input type="email" id="profileEmail" autocomplete="email" readonly></div>
-          <button type="submit" class="btn-login">Guardar cambios</button>
-          <button type="button" class="btn-logout" id="logoutButton">Cerrar sesión</button>
-        </form>
-      </section>
-
-      <div class="divider" id="loginDivider"><span>o</span></div>
-      <div class="back-link" id="loginBackLink">
-        <a href="index.html">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+<div aria-hidden="true" class="floating-deco floating-deco-1"></div>
+<div aria-hidden="true" class="floating-deco floating-deco-2"></div>
+<div aria-hidden="true" class="floating-deco floating-deco-3"></div>
+<main class="login-wrapper">
+<section aria-label="Acceso de Olympus Studio" class="login-card">
+<aside aria-label="Olympus Studio" class="login-brand-panel"><div class="back-link" id="loginBackLink">
+<a aria-label="Volver al sitio web de Olympus Studio" href="index.html">
+<svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="19" x2="5" y1="12" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Volver al sitio web
         </a>
-      </div>
-      </div>
-    </section>
-  </main>
-  <footer class="login-legal-footer" aria-label="Información legal"><span>© 2026 Olympus Studio</span><div><button type="button" onclick="showPrivacy()">Política de privacidad</button><button type="button" onclick="showTerms()">Términos y condiciones</button></div></footer>
+</div>
+<div class="login-logo">
+<a aria-label="Volver al inicio de Olympus Studio" href="index.html">
+<span class="login-logo-badge"><img alt="Logo de Olympus Studio" class="login-logo-image" src="img/olympus-studio-logo.png"/></span>
+</a>
+<p>Panel de administración</p>
+</div>
+<div class="login-brand-message">
+<span class="login-brand-kicker">ESTUDIO CREATIVO · CALI</span>
+<h1>Tu próximo gran paso empieza aquí.</h1>
+<p>Accede a tu espacio, mantén tu perfil al día y continúa impulsando tu marca.</p>
+</div>
+</aside>
+<div class="login-content-panel">
+<div aria-label="Acceso o registro" class="login-tabs" role="tablist">
+<button aria-selected="true" class="login-tab active" data-tab="login" type="button">Iniciar sesión</button>
+<button aria-selected="false" class="login-tab" data-tab="register" type="button">Registrarse</button>
+<div class="login-tab-indicator"></div>
+</div>
+<div aria-live="polite" class="message-box" id="messageBox" role="status">
+<span aria-hidden="true" id="messageIcon">⚠</span>
+<span id="messageText"></span>
+</div>
+<form class="login-form active" id="loginForm" novalidate="">
+<div class="form-group">
+<label for="loginUsername">Usuario o correo</label>
+<input autocomplete="username" id="loginUsername" placeholder="Ingresa tu usuario" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="loginPassword">Contraseña</label>
+<div class="password-wrapper">
+<input autocomplete="current-password" id="loginPassword" placeholder="Ingresa tu contraseña" required="" type="password"/>
+<button aria-label="Mostrar contraseña" class="toggle-password" id="toggleLoginPassword" type="button">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</button>
+</div>
+</div>
+<div class="login-options">
+<label class="remember-me"><input id="rememberMe" type="checkbox"/><span>Recordarme</span></label>
+<a class="forgot-link" href="#" onclick="showForgot(); return false;">¿Olvidaste tu contraseña?</a>
+</div>
+<button class="btn-login" type="submit">Continuar</button>
+</form>
+<form class="login-form" id="registerForm" novalidate="">
+<div class="form-group">
+<label for="regName">Nombre completo</label>
+<input autocomplete="name" id="regName" placeholder="Tu nombre completo" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="regEmail">Correo electrónico</label>
+<input autocomplete="email" id="regEmail" placeholder="tu@email.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="regUsername">Nombre de usuario</label>
+<input autocomplete="username" id="regUsername" placeholder="Elige un usuario" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="regPassword">Contraseña</label>
+<div class="password-wrapper">
+<input autocomplete="new-password" id="regPassword" placeholder="Mínimo 8 caracteres" required="" type="password"/>
+<button aria-label="Mostrar contraseña" class="toggle-password" id="toggleRegPassword" type="button">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</button>
+</div>
+</div>
+<div class="form-group">
+<label for="regConfirm">Confirmar contraseña</label>
+<div class="password-wrapper">
+<input autocomplete="new-password" id="regConfirm" placeholder="Repite tu contraseña" required="" type="password"/>
+<button aria-label="Mostrar contraseña" class="toggle-password" id="toggleRegConfirm" type="button">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</button>
+</div>
+</div>
+<label class="terms-check">
+<input id="regTerms" required="" type="checkbox"/>
+<span>Acepto los <a href="#" onclick="showTerms(); return false;">términos y condiciones</a> y la <a href="#" onclick="showPrivacy(); return false;">política de privacidad</a></span>
+</label>
+<button class="btn-login" type="submit">Crear cuenta</button>
+</form>
+<form class="login-form" id="verifyForm" novalidate="">
+<div aria-hidden="true" class="verify-icon">✦</div>
+<h2 class="verify-title" id="verifyTitle">Verifica tu acceso</h2>
+<p class="verify-copy" id="verifyCopy">Escribe el código de seis dígitos para continuar.</p>
+<div aria-live="polite" class="demo-code" id="demoCode"></div>
+<div class="form-group">
+<label for="verificationCode">Código de verificación</label>
+<input autocomplete="one-time-code" class="verification-input" id="verificationCode" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required="" type="text"/>
+</div>
+<button class="btn-login" type="submit">Verificar código</button>
+<button class="text-button" id="resendCode" type="button">Generar otro código</button>
+<a class="back-to-login" href="#" id="cancelVerification">Volver al acceso</a>
+</form>
+<form class="login-form" id="forgotForm" novalidate="">
+<p class="forgot-desc">Ingresa tu correo y te enviaremos instrucciones para restablecer tu contraseña.</p>
+<div class="form-group">
+<label for="forgotEmail">Correo electrónico</label>
+<input autocomplete="email" id="forgotEmail" placeholder="tu@email.com" required="" type="email"/>
+</div>
+<button class="btn-login" type="submit">Enviar instrucciones</button>
+<a class="back-to-login" href="#" onclick="showLogin(); return false;">← Volver al inicio de sesión</a>
+</form>
+<section aria-labelledby="profileHeading" class="login-form profile-panel" id="profilePanel">
+<div class="profile-heading">
+<span class="profile-avatar-wrap"><img alt="Foto de perfil" hidden="" id="profileAvatarPreview"/><span aria-hidden="true" id="profileAvatarFallback">O</span></span>
+<div><span class="section-kicker">Tu cuenta</span><h2 id="profileHeading">Mi perfil</h2><p>Actualiza tu información personal.</p></div>
+</div>
+<form id="profileForm" novalidate="">
+<label class="avatar-upload" for="profileAvatarInput">Cambiar foto de perfil<input accept="image/*" id="profileAvatarInput" type="file"/><span>Seleccionar imagen</span></label>
+<div class="form-group"><label for="profileName">Nombre completo</label><input autocomplete="name" id="profileName" required="" type="text"/></div>
+<div class="form-group"><label for="profileUsername">Nombre de usuario</label><input autocomplete="username" id="profileUsername" required="" type="text"/></div>
+<div class="form-group"><label for="profileEmail">Correo electrónico</label><input autocomplete="email" id="profileEmail" readonly="" type="email"/></div>
+<button class="btn-login" type="submit">Guardar cambios</button>
+<button class="btn-logout" id="logoutButton" type="button">Cerrar sesión</button>
+</form>
+</section>
 
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
-  <div class="modal modal-legal" id="modalTerms" role="dialog" aria-modal="true" aria-labelledby="loginTermsTitle" tabindex="-1"><button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button><span class="legal-modal-kicker">Olympus Studio · Información general</span><h3 id="loginTermsTitle">Términos y condiciones</h3><div class="modal-content"><p><strong>Uso del sitio.</strong> El contenido, las imágenes y los proyectos de muestra se presentan con fines informativos e ilustrativos. No deben reproducirse ni atribuirse como trabajos propios sin autorización.</p><p><strong>Solicitudes de servicio.</strong> Enviar una consulta no constituye una cotización, una reserva ni un contrato. El alcance, los tiempos, las revisiones, los valores y los derechos de uso se confirman en una propuesta aceptada por ambas partes.</p><p><strong>Información de usuario.</strong> Al enviar un mensaje, procura que los datos sean correctos y que el contenido compartido sea tuyo o tengas permiso para usarlo.</p><p><strong>Servicios externos.</strong> El formulario de contacto prepara un mensaje que puedes abrir en WhatsApp; ese servicio se rige por sus propias condiciones.</p><p class="legal-modal-note">Este texto es informativo y debe revisarse para ajustarlo a las condiciones reales del estudio antes de publicar el sitio.</p></div></div><div class="modal modal-legal" id="modalPrivacy" role="dialog" aria-modal="true" aria-labelledby="loginPrivacyTitle" tabindex="-1"><button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button><span class="legal-modal-kicker">Olympus Studio · Datos y privacidad</span><h3 id="loginPrivacyTitle">Política de privacidad</h3><div class="modal-content"><p><strong>Consultas de contacto.</strong> El formulario solicita nombre, correo, teléfono, servicio de interés y mensaje para preparar una respuesta a tu solicitud. Al pulsar el botón se abre WhatsApp con el texto; el sitio no lo envía a un servidor propio. Tú decides si lo envías. WhatsApp procesa los datos que compartas conforme a sus propias políticas.</p><p><strong>Cuentas de demostración.</strong> Los perfiles y datos creados en esta versión del acceso se guardan localmente en el navegador. No uses contraseñas ni información sensible reales; puedes borrar esos datos eliminando el almacenamiento de este sitio en tu navegador.</p><p><strong>Control de tus datos.</strong> Comparte solo la información necesaria para atender tu consulta. Para pedir una actualización o eliminación, utiliza la página Contáctanos.</p><p class="legal-modal-note">Aviso informativo para esta versión estática. Antes de usar el sitio comercialmente, revisa la identidad del responsable, los plazos de conservación y el procedimiento aplicable de protección de datos.</p></div></div><script src="js/login.js"></script>
+</div>
+</section>
+</main>
+<footer aria-label="Información legal" class="login-legal-footer"><span>© 2026 Olympus Studio</span><div><button onclick="showPrivacy()" type="button">Política de privacidad</button><button onclick="showTerms()" type="button">Términos y condiciones</button></div></footer>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div aria-labelledby="loginTermsTitle" aria-modal="true" class="modal modal-legal" id="modalTerms" role="dialog" tabindex="-1"><button aria-label="Cerrar" class="modal-close" onclick="closeModal()">×</button><span class="legal-modal-kicker">Olympus Studio · Información general</span><h3 id="loginTermsTitle">Términos y condiciones</h3><div class="modal-content"><p><strong>Uso del sitio.</strong> El contenido, las imágenes y los proyectos de muestra se presentan con fines informativos e ilustrativos. No deben reproducirse ni atribuirse como trabajos propios sin autorización.</p><p><strong>Solicitudes de servicio.</strong> Enviar una consulta no constituye una cotización, una reserva ni un contrato. El alcance, los tiempos, las revisiones, los valores y los derechos de uso se confirman en una propuesta aceptada por ambas partes.</p><p><strong>Información de usuario.</strong> Al enviar un mensaje, procura que los datos sean correctos y que el contenido compartido sea tuyo o tengas permiso para usarlo.</p><p><strong>Servicios externos.</strong> El formulario de contacto prepara un mensaje que puedes abrir en WhatsApp; ese servicio se rige por sus propias condiciones.</p><p class="legal-modal-note">Este texto es informativo y debe revisarse para ajustarlo a las condiciones reales del estudio antes de publicar el sitio.</p></div></div><div aria-labelledby="loginPrivacyTitle" aria-modal="true" class="modal modal-legal" id="modalPrivacy" role="dialog" tabindex="-1"><button aria-label="Cerrar" class="modal-close" onclick="closeModal()">×</button><span class="legal-modal-kicker">Olympus Studio · Datos y privacidad</span><h3 id="loginPrivacyTitle">Política de privacidad</h3><div class="modal-content"><p><strong>Consultas de contacto.</strong> El formulario solicita nombre, correo, teléfono, servicio de interés y mensaje para preparar una respuesta a tu solicitud. Al pulsar el botón se abre WhatsApp con el texto; el sitio no lo envía a un servidor propio. Tú decides si lo envías. WhatsApp procesa los datos que compartas conforme a sus propias políticas.</p><p><strong>Cuentas de usuario. </strong>En esta versión, la información del perfil se guarda localmente en el navegador y no se envía a un servidor propio. Evita incluir información sensible.</p><p><strong>Control de tus datos.</strong> Comparte solo la información necesaria para atender tu consulta. Para pedir una actualización o eliminación, utiliza la página Contáctanos.</p><p class="legal-modal-note">Aviso informativo para esta versión estática. Antes de usar el sitio comercialmente, revisa la identidad del responsable, los plazos de conservación y el procedimiento aplicable de protección de datos.</p></div></div><script src="js/login.js"></script>
 </body>
 </html>

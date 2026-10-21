@@ -320,22 +320,6 @@ body::before, body::after, .floating-deco { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .login-wrapper, .login-content-panel .login-form.active { animation: none !important; } }
 
 
-/* Cuentas de muestra predefinidas para probar acceso, perfil y cierre de sesión. */
-.demo-accounts { margin-top: 18px; padding: 15px; border: 1px solid #e2edf2; border-radius: 16px; background: linear-gradient(145deg,#f7fbfd,#fff); }
-.demo-accounts-heading > span { display: block; margin-bottom: 5px; color: #428ba5; font-size: .61rem; font-weight: 800; letter-spacing: .14em; }
-.demo-accounts-heading > strong { display: block; color: #173951; font-size: .89rem; }
-.demo-accounts-heading > p,.demo-note { margin-top: 4px; color: #71838d; font-size: .7rem; line-height: 1.5; }
-.demo-account-list { display: grid; gap: 7px; margin-top: 11px; }
-.demo-account { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 9px 11px; border: 1px solid #e8eff2; border-radius: 11px; background: #fff; color: #22465c; text-align: left; font: inherit; cursor: pointer; transition: transform .2s ease,border-color .2s ease,background .2s ease; }
-.demo-account:hover { transform: translateY(-1px); border-color: #9dcddd; background: #f4fbfd; }
-.demo-account span { display: grid; gap: 2px; }
-.demo-account strong { font-size: .72rem; }
-.demo-account small { color: #728591; font-size: .65rem; }
-.demo-account b { color: #367f99; font-size: .65rem; white-space: nowrap; }
-.demo-account-featured { border-color: #b5dce8; background: #f4fbfd; }
-.demo-note { margin-top: 10px; }
-@media (max-width: 520px) { .demo-accounts { padding: 12px; } }
-
 
 /* Ajuste solicitado: logotipo oficial más visible y mensaje de marca en una posición alta. */
 .login-brand-panel { justify-content: flex-start; }
@@ -357,24 +341,6 @@ body::before, body::after, .floating-deco { display: none !important; }
   .login-brand-message { margin-top: 1px; }
 }
 
-
-/* Sustitución de las etiquetas por una imagen de marca integrada en el panel de acceso. */
-.login-brand-visual { position: relative; isolation: isolate; z-index: 1; width: 100%; height: 142px; margin: 30px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,.72); border-radius: 20px; background: #173951; box-shadow: 0 12px 30px rgba(16,42,67,.12); }
-.login-brand-visual::after { position: absolute; inset: 25% 0 0; content: ""; background: linear-gradient(180deg,transparent,rgba(9,31,49,.84)); }
-.login-brand-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
-.login-brand-visual figcaption { position: absolute; z-index: 1; right: 15px; bottom: 13px; left: 15px; display: grid; gap: 3px; color: #fff; }
-.login-brand-visual figcaption strong { font-size: .83rem; }
-.login-brand-visual figcaption span { color: rgba(255,255,255,.82); font-size: .68rem; }
-@media (max-width: 860px) {
-  .login-brand-visual { grid-column: 1 / -1; height: 112px; margin-top: 8px; }
-  .login-brand-visual figcaption { right: 13px; bottom: 10px; left: 13px; }
-}
-@media (max-width: 540px) {
-  .login-brand-visual { height: 82px; margin-top: 0; border-radius: 14px; }
-  .login-brand-visual figcaption { display: block; }
-  .login-brand-visual figcaption strong { font-size: .72rem; }
-  .login-brand-visual figcaption span { display: none; }
-}
 
 
 /* Logo oficial sobre transparencia real, sin placa ni borde detrás. */
@@ -400,4 +366,58 @@ body { display:flex; flex-direction:column; align-items:center; justify-content:
 @media (max-width:520px) {
   body { justify-content:flex-start; padding:14px 0; }
   .login-legal-footer { padding:14px 12px 20px; }
+}
+
+
+/* Regreso al sitio en la parte superior y acceso sin módulos de prueba. */
+.login-brand-panel { min-height: 0; padding-top: 32px; padding-bottom: 36px; }
+.login-brand-panel > #loginBackLink { align-self: flex-start; margin: 0 0 22px; position: relative; z-index: 2; text-align: left; }
+.login-brand-panel > #loginBackLink a { color: #287895; font-size: .78rem; font-weight: 650; text-decoration: none; }
+.login-brand-panel > #loginBackLink a:hover { color: #153b55; }
+.login-brand-message { margin: 30px 0 0; padding: 0; }
+.login-content-panel { display: flex; flex-direction: column; justify-content: center; }
+.login-content-panel #loginForm { width: 100%; }
+@media (max-width: 860px) {
+  .login-brand-panel { align-items: center; }
+  .login-brand-panel > #loginBackLink { grid-column: 1 / -1; justify-self: start; margin: 0 0 -4px; }
+  .login-brand-panel .login-logo { grid-column: 1; }
+  .login-brand-panel .login-brand-message { grid-column: 2; margin: 0; }
+}
+@media (max-width: 540px) {
+  .login-brand-panel { align-items: start; }
+  .login-brand-panel > #loginBackLink { margin-bottom: 2px; }
+  .login-brand-panel .login-logo { grid-column: 1; }
+  .login-brand-panel .login-brand-message { grid-column: 2; }
+}
+
+
+/* Proporción final del acceso: menos aire bajo el botón y marca alineada arriba. */
+.login-brand-panel { padding-top: 24px; padding-bottom: 28px; }
+.login-brand-panel > #loginBackLink { margin-bottom: 10px; }
+.login-brand-panel > .login-logo { margin-bottom: 0; }
+.login-brand-panel .login-logo-badge { width: 178px; min-height: 144px; }
+.login-brand-panel .login-logo-image { width: 158px; height: 128px; max-height: 128px; }
+.login-brand-panel .login-brand-message { margin-top: 18px; }
+.login-content-panel { justify-content: flex-start; padding-top: 36px; padding-bottom: 30px; }
+@media (max-width: 860px) {
+  .login-brand-panel { padding: 20px 26px; gap: 16px 22px; }
+  .login-brand-panel > .login-logo { margin: 0; }
+  .login-brand-panel .login-brand-message { margin: 0; }
+}
+@media (max-width: 540px) {
+  .login-brand-panel { grid-template-columns: 96px minmax(0, 1fr); padding: 16px; gap: 12px 15px; }
+  .login-brand-panel .login-logo-badge { width: 92px; min-height: 72px; }
+  .login-brand-panel .login-logo-image { width: 80px; height: 62px; max-height: 62px; }
+}
+
+
+/* Último ajuste de proporción del acceso sin separador ni contenido de prueba. */
+@media (min-width: 861px) {
+  .login-brand-panel { padding-top: 20px; padding-bottom: 20px; }
+  .login-brand-panel > #loginBackLink { margin-bottom: 7px; }
+  .login-brand-panel .login-logo-badge { width: 155px; min-height: 126px; }
+  .login-brand-panel .login-logo-image { width: 140px; height: 112px; max-height: 112px; }
+  .login-brand-panel .login-brand-message { margin-top: 12px; }
+  .login-brand-panel .login-brand-message h1 { font-size: clamp(2rem, 2.5vw, 2.4rem); line-height: 1.05; }
+  .login-content-panel { padding-top: 32px; padding-bottom: 18px; }
 }
